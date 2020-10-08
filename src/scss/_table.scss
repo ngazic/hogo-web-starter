@@ -1,0 +1,44 @@
+/**
+ *
+ * Table styles
+ *
+ */
+
+$tableBorderColor: #979797;
+$tableFontSize: inherit;
+$tableCellPaddingSmall: 8px 0;
+$tableCellPaddingLarge: 8px 0;
+
+table {
+  @extend %blockMargin;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: $tableFontSize;
+  text-align: left;
+
+  caption {
+    @extend h6;
+    text-align: left;
+  }
+
+  td,
+  th {
+    padding: $tableCellPaddingSmall;
+    border: none;
+    border-bottom: 1px solid $tableBorderColor;
+  }
+
+  thead {
+    th {
+      font-weight: normal;
+      border-top: 1px solid $tableBorderColor;
+      border-bottom: 3px double $tableBorderColor;
+    }
+  }
+
+  tbody {
+    td {
+      border-bottom: 1px solid $tableBorderColor;
+    }
+  }
+}

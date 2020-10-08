@@ -1,0 +1,126 @@
+/**
+ *
+ * Spacings
+ *
+ */
+
+// sizes
+$tiny: 12px;
+$tinyBp: 16px;
+
+$sm: 20px;
+$smBp: 35px;
+
+$md: 30px;
+$mdBp: 60px;
+
+$lg: 40px;
+$lgBp: 80px;
+
+$xlg: 72px;
+$xlgBp: 132px;
+
+@mixin spacings {
+  // No padding or margin
+  @each $space in (padding, margin) {
+    .no-#{$space} {
+      #{$space}: 0 !important;
+    }
+
+    .no-#{$space}-bottom {
+      #{$space}-bottom: 0 !important;
+    }
+
+    .no-#{$space}-top {
+      #{$space}-top: 0 !important;
+    }
+  }
+
+  // General padding
+  @each $direction in (top, bottom) {
+    .padding-#{$direction}-tiny {
+      padding-#{$direction}: $tiny !important;
+
+      @include breakpoint(medium) {
+        padding-#{$direction}: $tinyBp !important;
+      }
+    }
+
+    .padding-#{$direction}-sm {
+      padding-#{$direction}: $sm !important;
+
+      @include breakpoint(medium) {
+        padding-#{$direction}: $smBp !important;
+      }
+    }
+
+    .padding-#{$direction}-md {
+      padding-#{$direction}: $md !important;
+
+      @include breakpoint(medium) {
+        padding-#{$direction}: $mdBp !important;
+      }
+    }
+
+    .padding-#{$direction}-lg {
+      padding-#{$direction}: $lg !important;
+
+      @include breakpoint(medium) {
+        padding-#{$direction}: $lgBp !important;
+      }
+    }
+
+    .padding-#{$direction}-xlg {
+      padding-#{$direction}: $xlg !important;
+
+      @include breakpoint(medium) {
+        padding-#{$direction}: $xlgBp !important;
+      }
+    }
+  }
+
+  // General margin
+  @each $direction in (top, bottom) {
+    .margin-#{$direction}-tiny {
+      margin-#{$direction}: $tiny !important;
+
+      @include breakpoint(medium) {
+        margin-#{$direction}: $tinyBp !important;
+      }
+    }
+
+    .margin-#{$direction}-sm {
+      margin-#{$direction}: $sm !important;
+
+      @include breakpoint(medium) {
+        margin-#{$direction}: $smBp !important;
+      }
+    }
+
+    .margin-#{$direction}-md {
+      margin-#{$direction}: $md !important;
+
+      @include breakpoint(medium) {
+        margin-#{$direction}: $mdBp !important;
+      }
+    }
+
+    .margin-#{$direction}-lg {
+      margin-#{$direction}: $lg !important;
+
+      @include breakpoint(medium) {
+        margin-#{$direction}: $lgBp !important;
+      }
+    }
+
+    .margin-#{$direction}-xlg {
+      margin-#{$direction}: $xlg !important;
+
+      @include breakpoint(medium) {
+        margin-#{$direction}: $xlgBp !important;
+      }
+    }
+  }
+}
+
+@include spacings;

@@ -1,0 +1,58 @@
+/**
+ *
+ * Print styles
+ *
+ */
+
+$pagePrintMargin: 2cm;
+
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  body,
+  p,
+  ul,
+  table {
+    font-size: 95% !important;
+  }
+
+  a {
+    &:visited {
+      text-decoration: underline;
+    }
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: $pagePrintMargin;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3,
+  h4 {
+    page-break-after: avoid;
+  }
+
+  .hide-for-print {
+    display: none !important;
+  }
+}

@@ -1,0 +1,38 @@
+/**
+ *
+ * Grid styles - foundation settings
+ *
+ */
+
+// NOTE: Don't change names of variables to camel case as these are overrides for foundation config.
+
+$global-width: 1150px;
+
+// Breakpoints
+$breakpoints: (
+  small: 0,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1280px,
+  xxlarge: 1440px,
+);
+
+$print-breakpoint: large;
+$breakpoint-classes: (small medium large);
+
+// Grid
+$grid-row-width: $global-width;
+$grid-column-count: 12;
+$grid-column-gutter: (
+  small: 32px,
+  medium: 30px,
+);
+$grid-column-align-edge: true;
+$grid-column-alias: false;
+$block-grid-max: 8;
+
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+@include foundation-visibility-classes;

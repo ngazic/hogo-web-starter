@@ -1,0 +1,50 @@
+/**
+ *
+ * Helper styles
+ *
+ */
+
+// No bullets
+.no-bullet,
+%no-bullet {
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+// Inline lists
+.inline-list,
+%inline-list {
+  li {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
+
+// Screenreads only
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.svg-defs {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+// Positioning
+.relative {
+  position: relative;
+}
+
+// Display
+.hidden {
+  display: none !important;
+}

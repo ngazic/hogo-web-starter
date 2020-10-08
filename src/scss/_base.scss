@@ -1,0 +1,301 @@
+/**
+ *
+ * Base styles
+ *
+ */
+
+// Body
+$bodyBackground: $color-white;
+$bodyColor: $color-black;
+$bodyFontFamily: $roboto;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --base-font-size: 16px;
+    --base-line-height: 1.5;
+}
+
+html {
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+    -webkit-overflow-scrolling: touch;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+body {
+    background: $bodyBackground;
+    color: $bodyColor;
+    font-family: $bodyFontFamily;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden auto;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        background-color: $color-yellow;
+        z-index: 10;
+        pointer-events: none;
+    }
+    &.js-drawer--expanded {
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+.-grey-bg {
+    background-color: $color-grey;
+}
+
+// Block elements
+$blockMargin: 20px;
+$blockMarginLarge: 48px;
+%blockMargin {
+    margin: 0 0 $blockMargin;
+    @include breakpoint(large) {
+        margin: 0 0 $blockMarginLarge;
+    }
+}
+
+// Paragraphs
+p {
+    @extend %blockMargin;
+}
+
+// Lists
+ul,
+ol {
+    @extend %blockMargin;
+    padding: 0 0 0 30px;
+    list-style-position: outside;
+}
+
+// LINKS & BUTTONS
+a {
+    color: $colorPrimary;
+    border-bottom: 3px solid $color-yellow;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    &.more {
+        font-size: rem(16px);
+        font-style: italic;
+        font-family: $barlow;
+        font-weight: 700;
+        line-height: rem(16px);
+        text-transform: uppercase;
+        padding-right: 11px;
+        position: relative;
+        display: inline-block;
+        &::after {
+            content: '';
+            width: 7px;
+            height: 12px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(0, -50%);
+            // background: url('/static/uploads/icon-arrow-black-right.svg') 100% no-repeat;
+        }
+    }
+    @media (hover: hover) {
+        &:hover {
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+        }
+    }
+    @include breakpoint(large) {
+        &.more {
+            font-size: rem(20px);
+            line-height: 24px;
+            border-bottom: 4px solid $color-yellow;
+            padding-right: 17px;
+            &::after {
+                width: 9px;
+                height: 15px;
+            }
+        }
+    }
+}
+
+.button {
+    display: inline-block;
+    background-color: $color-yellow;
+    font-size: rem(20px);
+    font-style: italic;
+    font-family: $barlow;
+    font-weight: 700;
+    line-height: rem(24px);
+    padding: 5px 28px 5px 13px;
+    border: 3px solid $color-yellow;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    &::after {
+        content: '';
+        width: 7px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translate(0, -50%);
+        // background: url('/static/uploads/icon-arrow-black-right.svg') 100% no-repeat;
+    }
+    &:hover {
+        background-color: $color-white;
+        border-bottom: 3px solid $color-yellow;
+    }
+    @include breakpoint(large) {
+        padding: 9px 36px 9px 21px;
+        &::after {
+            width: 9px;
+            height: 15px;
+        }
+    }
+    &--normal {
+        padding: 5px 13px;
+        &::after {
+            content: none;
+        }
+        @include breakpoint(large) {
+            padding: 9px 21px;
+        }
+    }
+    &--outline {
+        background-color: $color-white;
+        &:hover {
+            background-color: $color-yellow;
+        }
+    }
+}
+
+.order-1 {
+    @include breakpoint(large) {
+        order: 1;
+    }
+}
+
+.order-2 {
+    @include breakpoint(large) {
+        order: 2;
+    }
+}
+
+.order-1-medium {
+    @include breakpoint(medium) {
+        order: 1;
+    }
+}
+
+.order-2-medium {
+    @include breakpoint(medium) {
+        order: 2;
+    }
+}
+
+.layout-404 {
+    .button {
+        &:last-child {
+            margin-left: 16px;
+            @include breakpoint(large) {
+                margin-left: 24px;
+            }
+        }
+    }
+}
+
+// ENCOURAGE TYPES
+.encourage-types {
+    padding: 0;
+    margin: 48px 0 32px;
+    list-style: none;
+    li {
+        margin-bottom: 24px;
+        font-size: 20px;
+        line-height: 32px;
+        font-style: italic;
+        font-weight: 300;
+        display: flex;
+        strong {
+            font-weight: 400;
+        }
+        img {
+            margin-right: 24px;
+            width: 32px;
+        }
+    }
+    @include breakpoint(large) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 72px 0 80px;
+        li {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            line-height: 40px;
+        }
+    }
+}
+
+.main-wrap {
+    position: relative;
+    z-index: 2;
+}
+
+.body-logo {
+    @include breakpoint(large) {
+        // background: url('/static/uploads/body-logo.svg') 100% no-repeat;
+        background-size: 100% 100%;
+        top: 260px;
+        right: -150px;
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        opacity: 0.1;
+        z-index: 1;
+    }
+    .no-body-logo & {
+        display: none;
+    }
+}
+
+.featured-content {
+    background-color: $color-yellow;
+    padding: 16px;
+    margin-bottom: 16px;
+    p {
+        margin-bottom: 0;
+    }
+    @include breakpoint(large) {
+        padding: 40px;
+        margin-bottom: 24px;
+    }
+}
+
+.content-logo {
+    border-bottom: 1px solid transparent;
+    img {
+        max-height: 95px;
+        margin-top: 24px;
+    }
+}

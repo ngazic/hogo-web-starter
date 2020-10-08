@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="row margin-bottom-xlg">
+    <div class="column small-12">
+        <h1>{{ .Title }}</h1>
+        <p class="lead">{{ .Description }}</p>
+        <div>{{ .Content }}</div>
+        <a href="?component=breadcrumb">Probaj</a>
+        <div id="list">
+            <h1>The main list</h1>
+        </div>
+        <div id="breadcrumb" style="display: none;">I'm breadcrumb</div>
+    </div>
+</div>
+
+{{ end }} {{ define "scripts" }}
+<script>
+    window.onload = () => {
+        const query = window.location.search;
+        const component = new URLSearchParams(query).get('component');
+        showComponent(component);
+    };
+    const showComponent = (component) => {
+        if (document.getElementById(component)) {
+            document.getElementById(component).style.display = '';
+            document.getElementById('list').style.display = 'none';
+        }
+    };
+</script>
+
+{{ end }}

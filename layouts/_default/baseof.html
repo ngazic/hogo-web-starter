@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Web Starter</title>
+    <link rel="stylesheet" href="/assets/main.bundle.css">
+</head>
+
+<body {{ with .Params.bodyClass }} class="{{ . }}" {{ end }}>
+    <div class="overlay js-overlay"></div>
+    <div class="browser-notice js-browser-notice">
+
+    </div>
+
+    <main id="main">
+        <div class="main-wrap">
+            {{ block "main" . }}{{ end }}
+        </div>
+    </main>
+
+
+    <script src="/assets/main.bundle.js"></script>
+    {{ block "scripts" . }}{{ end }}
+</body>
+
+</html>

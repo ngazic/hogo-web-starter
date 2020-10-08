@@ -1,0 +1,19 @@
+# dir
+node_modules
+/public
+/design
+
+# files
+*.log
+.DS_Store
+Thumbs.db
+package-lock.json
+.env
+
+#hugo, netlify
+/resources/_gen
+/dist
+/static/node_modules
+/.idea/
+/.vscode/
+/static/assets
