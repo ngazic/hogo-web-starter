@@ -1,30 +1,59 @@
 {{ define "main" }}
-<div class="row margin-bottom-xlg">
-    <div class="column small-12">
-        <h1>{{ .Title }}</h1>
-        <p class="lead">{{ .Description }}</p>
-        <div>{{ .Content }}</div>
-        <a href="?component=breadcrumb">Probaj</a>
-        <div id="list">
-            <h1>The main list</h1>
-        </div>
-        <div id="breadcrumb" style="display: none;">I'm breadcrumb</div>
+{{ $listOfComponents := slice }}
+<div>
+  <div>
+
+    {{/* ========= Accordion ==========  */}}
+    {{ $component := "accordion" }}
+    {{ if templates.Exists ( printf "partials/components/%s/%s.html" $component $component) }}
+    {{ $listOfComponents = $listOfComponents | append $component }}
+    <div id="{{ $component }}" style="display: none;">
+      <a href="/">Go back to the list</a>
+      {{ partial ( printf "components/%s/%s.html" $component $component) ( dict "headingTag" "h5" "hasOpenAllButton" true "classList" "margin-bottom-md" "items" .Params.accordionItems ) }}
     </div>
+    {{ end }}
+    {{/* ========= END ==========  */}}
+
+    {{/* ========= Breadcrumb ==========  */}}
+    {{ $component := "breadcrumb" }}
+    {{ if templates.Exists ( printf "partials/components/%s/%s.html" $component $component) }}
+    {{ $listOfComponents = $listOfComponents | append $component }}
+    <div id="{{ $component }}" style="display: none;">
+      <a href="/">Go back to the list</a>
+      {{ partial ( printf "components/%s/%s.html" $component $component) $ }}
+    </div>
+    {{ end }}
+    {{/* ========= END ==========  */}}
+
+    <ul id="list">
+      List of components:
+      {{ range $nameOfComponent := $listOfComponents }}
+      <li>
+        <a href="?component={{ $nameOfComponent }}">{{ $nameOfComponent }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
 </div>
 
-{{ end }} {{ define "scripts" }}
+{{ end }}
+
+{{ define "scripts" }}
 <script>
-    window.onload = () => {
-        const query = window.location.search;
-        const component = new URLSearchParams(query).get('component');
-        showComponent(component);
-    };
-    const showComponent = (component) => {
-        if (document.getElementById(component)) {
-            document.getElementById(component).style.display = '';
-            document.getElementById('list').style.display = 'none';
-        }
-    };
+  window.onload = () => {
+    const query = window.location.search;
+    const component = new URLSearchParams(query).get('component');
+    showComponent(component);
+  };
+  const showComponent = (component) => {
+    if (document.getElementById(component)) {
+      console.log(component);
+      console.log(document.getElementById(component));
+      document.getElementById(component).style.display = '';
+      document.getElementById('list').style.display = 'none';
+    }
+  };
+
 </script>
 
 {{ end }}

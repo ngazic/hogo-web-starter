@@ -13,6 +13,7 @@ module.exports = {
   entry: [
     path.resolve('src', 'js', 'main.js'),
     path.resolve('src', 'scss', 'main.scss'),
+    ...pathToComponentScripts,
   ],
   output: {
     path: path.resolve('static', 'assets'),

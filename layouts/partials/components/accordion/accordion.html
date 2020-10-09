@@ -1,0 +1,42 @@
+{{ $pageTitle := "Accordion" }}
+{{ $className := "handorgel" }}
+<h1>Accordion component</h1>
+<p>heading tag is : {{ .headingTag }}</p>
+{{ safeHTML ( printf "<%s>" .headingTag ) }} We got this{{ safeHTML ( printf "</%s>" .headingTag ) }}
+{{ range $item := .items }}
+{{ $item.heading }}
+{{ safeHTML $item.content }}
+{{ end }}
+<div class="row">
+  <div class="column small-12">
+    <h1>{{ $pageTitle }}</h1>
+
+    {{ if .hasOpenAllButton }}
+    <div class="text-right">
+      <button class="{{ $className }}__button-toggle js-accordion-toggle">
+        <span class="js-accordion-open-all">RAZŠIRI VSE</span>
+        <span class="hidden js-accordion-hide-all">SKRIJ VSE</span>
+      </button>
+    </div>
+    {{ end }}
+
+    <div class="{{ $className }}{{ if .classList }} {{ .classList }}{{ end }}">
+      {{ range $index, $item := .items }}
+
+      <{{ .headingTag }} class="{{ $className }}__header">
+        <button class="{{ $className }}__header__button" {{ if $item.hasAutoFocus }} autofocus{{ end }}
+          id="{{ $index }}">
+          {{ safeHTML $item.heading }}
+
+        </button>
+      </{{ .headingTag }}
+      <div class="{{ $className }}__content" {{ if $item.isOpened }} -open{{ end }}>
+        <div class="{{ $className }}__content__inner">
+          {{ safeHTML $item.content }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</div>
