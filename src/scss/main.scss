@@ -1,16 +1,15 @@
 @charset "UTF-8";
-@import '../../node_modules/normalize.css/normalize';
-@import 'color',
-'easing',
-'mixin',
-'transition',
-'helper',
-'grid',
-'spacings',
-'typography',
-'base',
-'print',
-'table',
-'breadcrumbs';
-
+@import 'normalize', // https://github.com/sass/node-sass/issues/2362
+  'easing',
+  'grid',
+  'mixin',
+  'color',
+  'typography',
+  'base',
+  'helper',
+  'spacings',
+  'print',
+  'transition',
+  'table';
+  
 @import '../../layouts/partials/components/**/*.scss';

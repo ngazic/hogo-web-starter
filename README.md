@@ -30,3 +30,4 @@ Add new static page from lore ipsum template:
 hugo new newpage.md
 ```
 
+[link](https://localhost:1313) to site is on localhost port 1313.

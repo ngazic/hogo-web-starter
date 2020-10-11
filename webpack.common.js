@@ -7,7 +7,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const globImporter = require('node-sass-glob-importer');
 const glob = require('glob');
-const pathToComponentScripts = glob.sync(path.resolve('layouts', 'partials/components')+'/*/*.js');
+
+const pathToComponentScripts = glob.sync(`${path.resolve('layouts', 'partials/components')}/*/*.js`);
 
 module.exports = {
   entry: [

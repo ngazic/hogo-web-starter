@@ -17,9 +17,6 @@ $mdBp: 60px;
 $lg: 40px;
 $lgBp: 80px;
 
-$xlg: 72px;
-$xlgBp: 132px;
-
 @mixin spacings {
   // No padding or margin
   @each $space in (padding, margin) {
@@ -69,14 +66,6 @@ $xlgBp: 132px;
         padding-#{$direction}: $lgBp !important;
       }
     }
-
-    .padding-#{$direction}-xlg {
-      padding-#{$direction}: $xlg !important;
-
-      @include breakpoint(medium) {
-        padding-#{$direction}: $xlgBp !important;
-      }
-    }
   }
 
   // General margin
@@ -110,14 +99,6 @@ $xlgBp: 132px;
 
       @include breakpoint(medium) {
         margin-#{$direction}: $lgBp !important;
-      }
-    }
-
-    .margin-#{$direction}-xlg {
-      margin-#{$direction}: $xlg !important;
-
-      @include breakpoint(medium) {
-        margin-#{$direction}: $xlgBp !important;
       }
     }
   }
