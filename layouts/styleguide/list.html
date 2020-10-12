@@ -1,40 +1,78 @@
 {{ define "main" }}
+
 {{ $listOfComponents := slice }}
-<div>
-  <div>
+<main id="content" class="main">
 
-    {{/* ========= Accordion ==========  */}}
-    {{ $component := "accordion" }}
-    {{ if templates.Exists ( printf "partials/components/%s/%s.html" $component $component) }}
-    {{ $listOfComponents = $listOfComponents | append $component }}
-    <div id="{{ $component }}" style="display: none;">
-      <a href="/styleguide">Go back to the list</a>
-      {{ partial ( printf "components/%s/%s.html" $component $component) ( dict "headingTag" "h5" "hasOpenAllButton" true "classList" "margin-bottom-md" "items" .Params.accordionItems ) }}
+  {{/* ========= Accordion ==========  */}}
+  {{ $component := "accordion" }}
+  {{ if templates.Exists ( printf "partials/components/%s/%s.html" $component $component) }}
+  {{ $listOfComponents = $listOfComponents | append $component }}
+  <div id="{{ $component }}" style="display: none;">
+    <div class="row">
+      <div class="column small-12">
+        <h1>Accordion</h1>
+        {{ partial ( printf "components/%s/%s.html" $component $component) ( dict "headingTag" "h5" "hasOpenAllButton" true "classList" "margin-bottom-md" "items" .Params.accordionItems ) }}
+      </div>
     </div>
-    {{ end }}
-    {{/* ========= END ==========  */}}
-
-    {{/* ========= Breadcrumb ==========  */}}
-    {{ $component := "breadcrumb" }}
-    {{ if templates.Exists ( printf "partials/components/%s/%s.html" $component $component) }}
-    {{ $listOfComponents = $listOfComponents | append $component }}
-    <div id="{{ $component }}" style="display: none;">
-      <a href="/styleguide">Go back to the list</a>
-      {{ partial ( printf "components/%s/%s.html" $component $component) $ }}
-    </div>
-    {{ end }}
-    {{/* ========= END ==========  */}}
-
-    <ul id="list">
-      List of components:
-      {{ range $nameOfComponent := $listOfComponents }}
-      <li>
-        <a href="?component={{ $nameOfComponent }}">{{ $nameOfComponent }}</a>
-      </li>
-      {{ end }}
-    </ul>
   </div>
-</div>
+  {{ end }}
+  {{/* ========= END ==========  */}}
+
+  {{/* ========= Icon ==========  */}}
+  {{ $component := "icon" }}
+  {{ if templates.Exists ( printf "partials/components/%s/%s.html" $component $component) }}
+  {{ $listOfComponents = $listOfComponents | append $component }}
+  <div id="{{ $component }}" style="display: none;">
+    <div class="row">
+      <div class="column small-12">
+        <h1>Icon</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column small-12">
+        <h2>Mono color and gradient</h2>
+      </div>
+      <div class="column small-12 medium-6 large-4 text-center">
+        {{ partial ( printf "components/%s/%s.html" $component $component) (dict "name" "facebook" "type" "monoColor" "classList" "-large" ) }}
+      </div>
+      <div class="column small-12 medium-6 large-4 text-center">
+        {{ partial ( printf "components/%s/%s.html" $component $component) (dict "name" "twitter" "type" "monoColor" "classList" "-large" ) }}
+      </div>
+      <div class="column small-12 medium-6 large-4 text-center">
+        {{ partial ( printf "components/%s/%s.html" $component $component) (dict "name" "google" "type" "gradient" "classList" "-large" "gradient" (dict "fill" "red" "attributes" ( dict "id" "icon-gradient" "x1" "51%" "y1" "101%" "x2" "47%" "y2" "-20%" ) "stops" ( dict "0" (dict "color" "#5EBD3E" "offset" "0%") "1" (dict "color" "#FFB900" "offset" "15%") "2" (dict "color" "#F78200" "offset" "30%") "3" (dict "color" "#E23838" "offset" "60%") "4" (dict "color" "#973999" "offset" "80%") "5" (dict "color" "#009CDF" "offset" "100%") "1" (dict "color" "#FFB900" "offset" "15%") ) ) ) }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="column small-12">
+        <h2>Multi color</h2>
+      </div>
+      <div class="column small-12 medium-6 large-4 text-center">
+        {{ partial ( printf "components/%s/%s.html" $component $component) (dict "name" "location" "type" "multiColor" "classList" "-large" ) }}
+      </div>
+      <div class="column small-12 medium-6 large-4 text-center">
+        {{ partial ( printf "components/%s/%s.html" $component $component) (dict "name" "today" "type" "multiColor" "classList" "-large" ) }}
+      </div>
+      <div class="column small-12 medium-6 large-4 text-center">
+        {{ partial ( printf "components/%s/%s.html" $component $component) (dict "name" "sale" "type" "multiColor" "classList" "-large" ) }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+  {{/* ========= END ==========  */}}
+
+  <div class="row" id="list">
+    <div class="column small-12">
+      <h1>Components</h1>
+      <ul class="no-bullet">
+        {{ range $nameOfComponent := $listOfComponents }}
+        <li>
+          <a href="?component={{ $nameOfComponent }}">{{ $nameOfComponent }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</main>
 
 {{ end }}
 
@@ -53,5 +91,24 @@
   };
 
 </script>
+
+<style>
+  li {
+    display: block;
+    text-transform: capitalize;
+    padding: 10px;
+  }
+
+  li a {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    text-decoration: underline;
+  }
+
+</style>
 
 {{ end }}

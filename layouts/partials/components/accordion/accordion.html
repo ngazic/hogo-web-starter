@@ -1,36 +1,43 @@
-{{ $pageTitle := "Accordion" }} 
-{{ $className := "handorgel" }}
-{{ $data := $ }}
-<div class="row">
-  <div class="column small-12">
-    <h1>{{ $pageTitle }}</h1>
-    
-    {{ if .hasOpenAllButton }}
-    <div class="text-right">
-      <button class="{{ $className }}__button-toggle js-accordion-toggle">
-        <span class="js-accordion-open-all">RAZŠIRI VSE</span>
-        <span class="hidden js-accordion-hide-all">SKRIJ VSE</span>
-      </button>
-    </div>
-    {{ end }}
-    
-    <div class="{{ $className }}{{ if .classList }} {{ .classList }}{{ end }}">
-      {{ range $index, $item := $data.items }}
-      
-      {{ safeHTML ( printf "<%s class='%s__header'>" $.headingTag $className ) }}
-        <button class="{{ $className }}__header__button" {{ if $item.hasAutoFocus }} autofocus{{ end }}
-          id="{{ $index }}">
-          {{ safeHTML $item.heading }}
-        
-        </button>
-      {{ safeHTML ( printf "</%s>" $.headingTag ) }}
-      <div class="{{ $className }}__content" {{ if $item.isOpened }} -open{{ end }}>
-        <div class="{{ $className }}__content__inner">
-          {{ safeHTML $item.content }}
-        </div>
-      </div>
-      {{ end }}
-    </div>
+{{/**
 
+     Accordion element.
+
+     @param {Map}  data                       - Main object.
+     @param {String}  data.headingTag          - Tag for heading.
+     @param {Boolean} data.hasOpenAllButton    - Shows button to open all panels.
+     @param {Boolean} data.items.hasAutoFocus  - Determines if single item has auto focus
+     @param {Boolean} data.items.isOpened      - Determines if single item is opened
+
+  **/}}
+
+{{ $data := $ }}
+{{ $pageTitle := "Accordion" }}
+{{ $className := "handorgel" }}
+
+{{ if .hasOpenAllButton }}
+<div class="text-right">
+  <button class="{{ $className }}__button-toggle js-accordion-toggle">
+    <span class="js-accordion-open-all">RAZŠIRI VSE</span>
+    <span class="hidden js-accordion-hide-all">SKRIJ VSE</span>
+  </button>
+</div>
+{{ end }}
+
+<div class="{{ $className }}{{ if $data.classList }} {{ $data.classList }}{{ end }}">
+  {{ range $index, $item := $data.items }}
+  {{ safeHTML ( printf "<%s class='%s__header'>" $.headingTag $className ) }}
+  <button class="{{ $className }}__header__button" {{ if $item.hasAutoFocus }} autofocus{{ end }} id="{{ $index }}">
+    {{ safeHTML $item.heading }}
+    <span
+      class="{{ $className }}__icon -open">{{ partial "components/icon/icon.html" ( dict "name" "arrow-backward" "type" "monoColor" ) }}</span>
+    <span
+      class="{{ $className }}__icon -close">{{ partial "components/icon/icon.html" ( dict "name" "arrow-backward" "type" "monoColor" ) }}</span>
+  </button>
+  {{ safeHTML ( printf "</%s>" $.headingTag ) }}
+  <div class="{{ $className }}__content" {{ if $item.isOpened }} data-open{{ end }}>
+    <div class="{{ $className }}__content__inner">
+      {{ safeHTML $item.content }}
+    </div>
   </div>
+  {{ end }}
 </div>

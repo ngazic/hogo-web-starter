@@ -1,0 +1,44 @@
+{{/**
+
+    Icon
+
+    Outputs svg icon with options of mono color, gradient or multi color.
+
+    @param {Map} data                      - Data object
+    @param {string} $data.name                 - Name of icon
+    @param {string} $data.type                 - Color type of icon, can be `monoColor`, `gradient` or `multiColor`
+
+    Params used for gradient icons only
+
+    @param {Map} $data.gradient             - Gradient definitions
+    @param {String} $data.gradient.fill        - Gradient fallback color
+    @param {Map} $data.gradient.attributes  - Gradient attributes
+    @param {Array}  $data.gradient.stops       - Gradient stops
+
+  **/}}
+
+{{ $data := $ }}
+{{ $type := newScratch }}
+{{ $symbolDefsColorMulti := "/media/icons/symbol-defs-color-multi.svg" }}
+{{ $symbolDefsColorMonoAndGradient := "/media/icons/symbol-defs-color-mono-and-gradient.svg" }}
+{{ $type.Set "monoColor" $symbolDefsColorMonoAndGradient }}
+{{ $type.Set "gradient" $symbolDefsColorMonoAndGradient }}
+{{ $type.Set "multiColor" $symbolDefsColorMulti }}
+
+{{ if eq $data.type "gradient" }}
+<svg class="svg-defs" aria-hidden="true">
+  <defs>
+    <linearGradient {{ range $key, $value := $data.gradient.attributes }} {{ $key }}="{{ $value }}" {{ end }}>
+      {{ range $item := $data.gradient.stops }}
+      <stop stop-color="{{ $item.color }}" offset="{{ $item.offset }}"></stop>
+      {{ end }}
+    </linearGradient>
+  </defs>
+</svg>
+{{ end }}
+
+<svg class="icon icon--{{ $data.name }}{{ if $data.classList }} {{ $data.classList }} {{ end }}" aria-hidden="true"
+  {{ if eq $data.type "gradient" }} style="fill: url(#{{ $data.gradient.attributes.id }}) {{ $data.gradient.fill }};"
+  {{ range $key, $value := $data.gradient.attributes }} {{ $key }}="{{ $value }}" {{ end }} {{ end }}>
+  <use xlink:href="{{ $type.Get $data.type }}#icon-{{ $data.name }}"></use>
+</svg>
