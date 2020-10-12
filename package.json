@@ -8,7 +8,7 @@
         "hugo:build": "hugo",
         "webpack:serve": "webpack --config webpack.dev.js",
         "webpack:build": "webpack --config webpack.prod.js",
-        "stylelint": "stylelint \"assets/scss/**/*.scss\" --syntax scss",
+        "stylelint": "stylelint \"src/scss/*.scss\" \"layouts/partials/components/**/*.scss\" --syntax scss",
         "eslint": "eslint src/js",
         "eslint:fix": "eslint src/js --fix",
         "lint": "run-s stylelint eslint",

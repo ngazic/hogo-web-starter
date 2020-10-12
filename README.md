@@ -1,33 +1,30 @@
-# Hugo Web Starter
+# web-starter-hugo
+Web starter Hugo edition
 
-# Install
-
+### Project setup
 If you don't already have [Hugo](https://gohugo.io) installed, please go to [releases](https://github.com/gohugoio/hugo/releases) page and download the latest hugo extended for your operating system..
-
-Also you need to install normalize, etc. via
-``` bash
+```
 npm i
 ```
 
-In addition you need support for Git LFS on your machine.
-
-
-# Development
-
-Run development:
-
-``` bash
-hugo server
+### Compiles and auto-reloads for development
 ```
-or
-``` bash
 npm run dev
 ```
+Site is served on [localhost:1313](https://localhost:1313)
 
-Add new static page from lore ipsum template:
-
+### Compiles and minifies for production
 ```
-hugo new newpage.md
+npm run build
 ```
 
-[link](https://localhost:1313) to site is on localhost port 1313.
+### Lints files
+```
+npm run lint
+```
+
+### BEVM
+
+Read more about BEVM rules: https://www.slideshare.net/jordanlewiz/chainable-bem-modifiers?next_slideshow=1
+
+

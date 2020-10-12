@@ -16,129 +16,129 @@ $handorgel__header--focus__button-background-color: transparent;
 $className: 'handorgel';
 
 .#{$className} {
-    border-left: none;
-    border-right: none;
+  border-left: none;
+  border-right: none;
 
-    &__button-toggle {
-        background-color: transparent;
-        border: none;
-        color: $colorBlue;
-        font-size: 14px;
-        text-transform: uppercase;
-        padding-right: 0;
-        margin-bottom: 15px;
-        cursor: pointer;
+  &__button-toggle {
+    background-color: transparent;
+    border: none;
+    color: $colorBlue;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-right: 0;
+    margin-bottom: 15px;
+    cursor: pointer;
 
-        @media (hover: hover) {
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
-        span.hidden {
-            display: none;
-        }
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    &__header {
-        font-size: 18px;
+    span.hidden {
+      display: none;
+    }
+  }
 
-        &--opened {
-            border-bottom: none;
-        }
+  &__header {
+    font-size: 18px;
+
+    &--opened {
+      border-bottom: none;
+    }
+  }
+
+  &__content {
+    border-top: none;
+    background: transparent;
+    padding-right: 60px;
+
+    &--opened {
+      border-top: none;
     }
 
-    &__content {
-        border-top: none;
-        background: transparent;
-        padding-right: 60px;
+    h3 {
+      margin: 0 0 16px;
 
-        &--opened {
-            border-top: none;
-        }
-
-        h3 {
-            margin: 0 0 16px;
-
-            @include breakpoint(medium) {
-                margin: 10px 0 26px;
-            }
-        }
-
-        p {
-            margin-bottom: 16px;
-            font-size: 14px;
-            color: $colorBlack;
-
-            @include breakpoint(large) {
-                margin-bottom: 24px;
-                font-size: 16px;
-            }
-        }
+      @include breakpoint(medium) {
+        margin: 10px 0 26px;
+      }
     }
 
-    &__icon.-open {
-        transform: rotate(-90deg);
+    p {
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: $colorBlack;
+
+      @include breakpoint(large) {
+        margin-bottom: 24px;
+        font-size: 16px;
+      }
     }
+  }
 
-    &__icon.-close {
-        transform: rotate(90deg);
-    }
+  &__icon.-open {
+    transform: rotate(-90deg);
+  }
 
-    &__header__button {
-        font-weight: 700 !important;
-        position: relative;
-        background-color: transparent;
-        color: $colorBlack;
+  &__icon.-close {
+    transform: rotate(90deg);
+  }
 
-        @include breakpoint(medium) {
-            padding-right: 60px;
-        }
+  &__header__button {
+    font-weight: 700 !important;
+    position: relative;
+    background-color: transparent;
+    color: $colorBlack;
 
-        @include breakpoint(xlarge) {
-            padding: 30px 63px 29px 0;
-        }
-
-        // Note: icons are not part of plugin, custom added
-        .#{$className}__icon {
-            font-size: 22px;
-            position: absolute;
-            top: 17px;
-            right: 0;
-            color: $colorBlue;
-
-            @include breakpoint(medium) {
-                font-size: 26px;
-                top: 14px;
-            }
-
-            @include breakpoint(xlarge) {
-                top: 30px;
-            }
-        }
-
-        &[aria-expanded="true"] {
-            .#{$className}__icon.-open {
-                display: none;
-            }
-        }
-
-        &[aria-expanded="false"] {
-            .#{$className}__icon.-close {
-                display: none;
-            }
-        }
-    }
-
-    @include breakpoint(large) {
-        &__header {
-            font-size: 20px;
-        }
+    @include breakpoint(medium) {
+      padding-right: 60px;
     }
 
     @include breakpoint(xlarge) {
-        &__header {
-            font-size: 24px;
-        }
+      padding: 30px 63px 29px 0;
     }
+
+    // Note: icons are not part of plugin, custom added
+    .#{$className}__icon {
+      font-size: 22px;
+      position: absolute;
+      top: 17px;
+      right: 0;
+      color: $colorBlue;
+
+      @include breakpoint(medium) {
+        font-size: 26px;
+        top: 14px;
+      }
+
+      @include breakpoint(xlarge) {
+        top: 30px;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .#{$className}__icon.-open {
+        display: none;
+      }
+    }
+
+    &[aria-expanded="false"] {
+      .#{$className}__icon.-close {
+        display: none;
+      }
+    }
+  }
+
+  @include breakpoint(large) {
+    &__header {
+      font-size: 20px;
+    }
+  }
+
+  @include breakpoint(xlarge) {
+    &__header {
+      font-size: 24px;
+    }
+  }
 }
